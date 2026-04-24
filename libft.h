@@ -6,7 +6,7 @@
 /*   By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 15:28:35 by jihchoi           #+#    #+#             */
-/*   Updated: 2026/04/24 03:09:14 by jihchoi          ###   ########.fr       */
+/*   Updated: 2026/04/24 04:52:44 by jihchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ size_t	ft_strlen(const char *s);
 size_t  ft_strlcat(char *dst, const char *src, size_t size);
 size_t  ft_strlcpy(char *dst, const char *src, size_t size);
 char    *ft_strdup(const char   *s);
+char    *ft_substr(char const *s, unsigned int start, size_t n);
 
 // conversion
 int	ft_atoi(const char *str);
