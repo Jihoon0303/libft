@@ -6,11 +6,11 @@
 /*   By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 12:36:05 by jihchoi           #+#    #+#             */
-/*   Updated: 2026/04/22 16:23:11 by jihchoi          ###   ########.fr       */
+/*   Updated: 2026/04/23 19:13:15 by jihchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

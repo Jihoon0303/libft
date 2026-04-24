@@ -6,13 +6,13 @@
 /*   By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 14:07:50 by jihchoi           #+#    #+#             */
-/*   Updated: 2026/04/21 14:00:56 by jihchoi          ###   ########.fr       */
+/*   Updated: 2026/04/23 19:15:43 by jihchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
+#include "libft.h"
 
-int	tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c + 32);

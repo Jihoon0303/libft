@@ -6,11 +6,11 @@
 /*   By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 23:18:26 by jihchoi           #+#    #+#             */
-/*   Updated: 2026/04/22 15:10:25 by jihchoi          ###   ########.fr       */
+/*   Updated: 2026/04/23 19:05:47 by jihchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {
