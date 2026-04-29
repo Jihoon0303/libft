@@ -6,19 +6,20 @@
 #    By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/23 20:32:54 by jihchoi           #+#    #+#              #
-#    Updated: 2026/04/23 20:40:30 by jihchoi          ###   ########.fr        #
+#    Updated: 2026/04/29 12:59:41 by jihchoi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CC = cc
+gCC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memchr.c ft_memcmp.c ft_memmove \
-      ft_strlen.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_strnstr.c ft_strlcat ft_strlcpy \
-      ft_atoi.c ft_lower ft_toupper \
-      ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint \
+SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memchr.c ft_memcmp.c ft_memmove.c ft_calloc.c \
+      ft_strlen.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_strnstr.c ft_strlcat.c ft_strlcpy.c ft_strdup.c ft_substr.c ft_strtirm.c ft_strmapi.c ft_striteri.c \
+      ft_atoi.c ft_lower.c ft_toupper.c ft_itoa.c \
+      ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
+      ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c 
 
 OBJ = $(SRC:.c=.o)
 

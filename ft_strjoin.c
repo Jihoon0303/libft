@@ -1,39 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/14 15:46:25 by jihchoi           #+#    #+#             */
-/*   Updated: 2026/04/27 14:37:25 by jihchoi          ###   ########.fr       */
+/*   Created: 2026/04/27 14:21:23 by jihchoi           #+#    #+#             */
+/*   Updated: 2026/04/27 15:36:00 by jihchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *s)
+#include  "libft.h"
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	i;
+	size_t	j;
+	char	*res;
 
+	if (!s1 || !s2)
+		return(0);
+	res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	i = 0;
-	while (s[i])
+	j = 0;
+	while (s1[i])
+	{
+		res[i] = s1[i];
 		i++;
-	return (i);
+	}
+	while (s2[j])
+	{
+		res[i+j] = s2[j];
+		j++;
+	}
+	res[i+j] = '\0';
+	return (res);
 }
 /*
-#include <stdio.h>
-
 int main(void)
 {
-	char	*str1 = "jihoon";
-	char	*str2 = "sival sival";
-	char	*str3 = " ";
+	printf("%s\n",ft_strjoin("hello", "world"));
 
-	printf("str1: %zu\n", ft_strlen(str1)); // zu = a value of type size_t
-	printf("str2: %zu\n", ft_strlen(str2)); // %d is for int
-	printf("str3: %zu\n", ft_strlen(str3));	// size_t non-negative number
-
-	return (0);
-}
-*/
+}*/

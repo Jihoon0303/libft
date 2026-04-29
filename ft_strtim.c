@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strtim.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/14 15:46:25 by jihchoi           #+#    #+#             */
-/*   Updated: 2026/04/27 14:37:25 by jihchoi          ###   ########.fr       */
+/*   Created: 2026/04/27 15:06:38 by jihchoi           #+#    #+#             */
+/*   Updated: 2026/04/27 17:19:58 by jihchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_strtrim(char const	*s1, char const *set)
 {
-	size_t	i;
+	size_t	len_s1;
+	size_t	start;
+	size_t	end;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (!s1 || !set)
+		return (0);
+	start = 0;
+	len_s1 = ft_strlen(s1);
+	end = len_s1 - 1;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	while (end > start && ft_strchr(set, s1[end]))
+		end--;
+	return (ft_substr(s1, start, (end - start + 1)));
 }
-/*
-#include <stdio.h>
-
-int main(void)
-{
-	char	*str1 = "jihoon";
-	char	*str2 = "sival sival";
-	char	*str3 = " ";
-
-	printf("str1: %zu\n", ft_strlen(str1)); // zu = a value of type size_t
-	printf("str2: %zu\n", ft_strlen(str2)); // %d is for int
-	printf("str3: %zu\n", ft_strlen(str3));	// size_t non-negative number
-
-	return (0);
-}
-*/
