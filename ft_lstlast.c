@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/22 13:26:29 by jihchoi           #+#    #+#             */
-/*   Updated: 2026/05/01 23:03:01 by jihchoi          ###   ########.fr       */
+/*   Created: 2026/05/01 17:05:27 by jihchoi           #+#    #+#             */
+/*   Updated: 2026/05/01 17:07:05 by jihchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	if (little[0] == '\0')
-		return ((char *)big);
-	while (big[i] && i < len)
-	{
-		j = 0;
-		while (little[j]
-			&& big[i + j]
-			&& (i + j) < len
-			&& big[i + j] == little[j])
-		{		
-			j++;
-		}
-		if (little[j] == '\0')
-			return ((char *)&big[i]);
-		i++;
-	}
-	return (NULL);
+	if (!lst)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

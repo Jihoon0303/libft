@@ -6,7 +6,7 @@
 /*   By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 12:36:05 by jihchoi           #+#    #+#             */
-/*   Updated: 2026/04/23 19:13:15 by jihchoi          ###   ########.fr       */
+/*   Updated: 2026/05/03 15:52:08 by jihchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (n == 0)
 		return (0);
-	while (s1[i] == s2[i] && i < n)
-	{
-		if (s1[i] == '\0')
-			retrun (0);
-		i++;
-	}
+	while (i++ < n  && s1[i] == s2[i] && s1[i] != '\0')
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
+/*
+#include <stdio.h>
+int main()
+{
+int i = ft_strncmp("abcdefgh","abcdfxyz", 4); 
+printf("%i", i);
+}*/

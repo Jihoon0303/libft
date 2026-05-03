@@ -6,7 +6,7 @@
 /*   By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:28:24 by jihchoi           #+#    #+#             */
-/*   Updated: 2026/04/29 12:31:05 by jihchoi          ###   ########.fr       */
+/*   Updated: 2026/05/01 22:48:08 by jihchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	ft_putstr_fd(char *s, int fd)
 	int	i;
 
 	if (!s)
-		return;
-
+		return ;
 	i = 0;
 	while (s[i])
 	{

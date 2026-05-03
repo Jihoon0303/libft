@@ -6,7 +6,7 @@
 /*   By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:38:06 by jihchoi           #+#    #+#             */
-/*   Updated: 2026/04/29 12:59:05 by jihchoi          ###   ########.fr       */
+/*   Updated: 2026/05/01 22:45:31 by jihchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	if (num >= 10)
 		ft_putnbr_fd(num / 10, fd);
-	c = num % 10 +'0';
+	c = num % 10 + '0';
 	write(fd, &c, 1);
 }

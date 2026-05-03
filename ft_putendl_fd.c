@@ -6,7 +6,7 @@
 /*   By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:34:01 by jihchoi           #+#    #+#             */
-/*   Updated: 2026/04/29 12:37:58 by jihchoi          ###   ########.fr       */
+/*   Updated: 2026/05/01 22:50:23 by jihchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	if (!s)
-		return;
-
+		return ;
 	while (*s)
 		write(fd, s++, 1);
 	write(fd, "\n", 1);

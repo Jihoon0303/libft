@@ -6,147 +6,168 @@
 /*   By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 15:35:39 by jihchoi           #+#    #+#             */
-/*   Updated: 2026/04/29 15:07:45 by jihchoi          ###   ########.fr       */
+/*   Updated: 2026/05/01 23:07:12 by jihchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_countword(char  const *s, char c)
+static char	*dup_word(char const *s, int len)
 {
-	size_t	count;
+	char	*word;
+	int		i;
 
-	if (!*s)
+	word = malloc(len + 1);
+	if (!word)
 		return (0);
+	i = 0;
+	while (i < len)
+	{
+		word[i] = s[i];
+		i++;
+	}
+	word[i] = '\0';
+	return (word);
+}
+
+static void	free_all(char **res, int i)
+{
+	while (i > 0)
+		free(res[--i]);
+	free(res);
+}
+
+static int	count_words(char const *s, char c)
+{
+	int	count;
+
 	count = 0;
 	while (*s)
 	{
 		while (*s == c)
 			s++;
 		if (*s)
+		{
 			count++;
-		while (*s != c && *s)
-			s++;
+			while (*s && *s != c)
+				s++;
+		}
 	}
 	return (count);
+}
+
+static int	process_split(char **res, char const *s, char c)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		if (*s)
+		{
+			len = 0;
+			while (s[len] && s[len] != c)
+				len++;
+			res[i] = dup_word(s, len);
+			if (!res[i])
+			{
+				free_all(res, len);
+				return (-1);
+			}
+			i++;
+			s += len;
+		}
+	}
+	res[i] = NULL;
+	return (0);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**res;
-	size_t	len_word;
-	int	i;
 
-	res = (char **)malloc((ft_countword(s, c) + 1) * sizeof(char *));
-	if (!s || !res)
+	if (!s)
 		return (0);
-	i = 0;
-	while (*s)
-	{
-		while (*s == c && *s)
-			s++;
-		if (*s)
-		{
-			if (!ft_strchr(s, c))
-				len_word = ft_strlen(s);
-			else
-				len_word = ft_strchr(s, c) - s;
-			res[i++] = ft_substr(s, 0, len_word);
-			s += len_word;
-		}
-	}
-	res[i] = NULL;
+	res = malloc(sizeof(char *) * (count_words(s, c) + 1));
+	if (!res)
+		return (0);
+	if (process_split(res, s, c) == -1)
+		return (0);
 	return (res);
 }
-
-
 /*
- * #include "libft.h"
+#include <stdio.h>
 #include <stdlib.h>
 
-static size_t  ft_wordcount(char const *s, char c)
+static void print_split(char **res)
 {
-    size_t count;
+    int i = 0;
 
-    count = 0;
-    while (*s)
+    if (!res)
     {
-        while (*s == c)
-            s++;
-        if (*s)
-        {
-            count++;
-            while (*s && *s != c)
-                s++;
-        }
+        printf("NULL\n");
+        return;
     }
-    return (count);
-}
 
-static char *ft_worddup(char const *s, size_t len)
-{
-    char    *word;
-    size_t  i;
-
-    word = malloc(len + 1);
-    if (!word)
-        return (NULL);
-    i = 0;
-    while (i < len)
+    while (res[i])
     {
-        word[i] = s[i];
+        printf("[%s]\n", res[i]);
         i++;
     }
-    word[i] = '\0';
-    return (word);
+    printf("[NULL]\n");
 }
 
-static void ft_free_all(char **res, size_t i)
+static void free_split(char **res)
 {
-    while (i > 0)
+    int i = 0;
+
+    if (!res)
+        return;
+
+    while (res[i])
     {
-        free(res[i - 1]);
-        i--;
+        free(res[i]);
+        i++;
     }
     free(res);
 }
 
-char    **ft_split(char const *s, char c)
+int main(void)
 {
-    char    **res;
-    size_t  i;
-    size_t  len;
+    char **res;
 
-    if (!s)
-        return (NULL);
+    printf("---- TEST 1 ----\n");
+    res = ft_split("hello 42 school", ' ');
+    print_split(res);
+    free_split(res);
 
-    res = malloc(sizeof(char *) * (ft_wordcount(s, c) + 1));
-    if (!res)
-        return (NULL);
+    printf("\n---- TEST 2 ----\n");
+    res = ft_split("   hello   42   school   ", ' ');
+    print_split(res);
+    free_split(res);
 
-    i = 0;
-    while (*s)
-    {
-        while (*s == c)
-            s++;
+    printf("\n---- TEST 3 ----\n");
+    res = ft_split("aaaaa", 'a');
+    print_split(res);
+    free_split(res);
 
-        if (!*s)
-            break;
+    printf("\n---- TEST 4 ----\n");
+    res = ft_split("", ' ');
+    print_split(res);
+    free_split(res);
 
-        len = 0;
-        while (s[len] && s[len] != c)
-            len++;
+    printf("\n---- TEST 5 ----\n");
+    res = ft_split("one:two::three", ':');
+    print_split(res);
+    free_split(res);
 
-        res[i] = ft_worddup(s, len);
-        if (!res[i])
-        {
-            ft_free_all(res, i);
-            return (NULL);
-        }
+    printf("\n---- TEST 6 ----\n");
+    res = ft_split(NULL, ' ');
+    print_split(res);
+    free_split(res);
 
-        i++;
-        s += len;
-    }
-    res[i] = NULL;
-    return (res);
-}*
+    return (0);
+}*/

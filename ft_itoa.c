@@ -6,7 +6,7 @@
 /*   By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 18:02:21 by jihchoi           #+#    #+#             */
-/*   Updated: 2026/04/29 11:29:54 by jihchoi          ###   ########.fr       */
+/*   Updated: 2026/05/01 18:52:16 by jihchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_itoa(int n)
 {
 	char	*res;
 	long	num;
-	int	len;
+	int		len;
 
 	num = n;
 	len = count_len(num);
@@ -39,7 +39,6 @@ char	*ft_itoa(int n)
 	if (!res)
 		return (0);
 	res[len] = '\0';
-
 	if (num < 0)
 	{
 		res[0] = '-';

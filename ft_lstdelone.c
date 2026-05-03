@@ -1,38 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jihchoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/22 13:26:29 by jihchoi           #+#    #+#             */
-/*   Updated: 2026/05/01 23:03:01 by jihchoi          ###   ########.fr       */
+/*   Created: 2026/05/01 17:14:29 by jihchoi           #+#    #+#             */
+/*   Updated: 2026/05/01 22:12:44 by jihchoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	if (little[0] == '\0')
-		return ((char *)big);
-	while (big[i] && i < len)
-	{
-		j = 0;
-		while (little[j]
-			&& big[i + j]
-			&& (i + j) < len
-			&& big[i + j] == little[j])
-		{		
-			j++;
-		}
-		if (little[j] == '\0')
-			return ((char *)&big[i]);
-		i++;
-	}
-	return (NULL);
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
 }
